@@ -24,6 +24,7 @@ provider "aws" {
 
 # create instance
 resource "aws_instance" "web_server01" {
+# ubuntu ami
   ami = "ami-08c40ec9ead489470"
   instance_type = "t2.micro"
   # refering back to deployment 4 GS
@@ -34,7 +35,7 @@ resource "aws_instance" "web_server01" {
   #key_name = "ubuntuSandbox"
 
   user_data = "${file("/home/ubuntu/terraform/deploy.sh")}"
-
+# name of the instance
   tags = {
     "Name" : "tf_made_instance"
   }
